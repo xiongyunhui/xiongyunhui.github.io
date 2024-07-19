@@ -1,68 +1,84 @@
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <title>Hello World | Hexo</title>
-    <meta name="author" content="John Doe" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="icon" href="/images/avatar.jpg" />
+    <head>
 
-    <!-- 引入石蒜模拟器的 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.css" />
-<meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-    <!-- 确保在 body 结束前引入小部件的容器 -->
-    <div id="sakana-widget"></div>
 
-    <!-- 引入石蒜模拟器的 JavaScript 文件，并初始化小部件 -->
-    <script>
-        function initSakanaWidget() {
-            // 获取石蒜模拟器的泷奈角色对象
-            const takina = SakanaWidget.getCharacter('takina');
 
-            // 修改角色对象的参数，设置为超慢速无阻尼
-            takina.initialState = {
-                ...takina.initialState,
-                i: 0.001,  // 惯性设置为超慢速
-                d: 0,      // 衰减设置为无阻尼
-            };
 
-            // 注册修改后的角色对象
-            SakanaWidget.registerCharacter('takina-slow', takina);
 
-            // 创建新的 SakanaWidget 实例，并设置自动缩放和使用新注册的角色
-            const widgetOptions = {
-                autoFit: true,  // 开启自动缩放
-                character: 'takina-slow', // 使用新注册的角色
-                draggable: true, // 可拖动
-                rod: true, // 展示支撑杆
-                controls: true, // 控制栏
-            };
+        <canvas id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+        <script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+        <script src="/js/background.min.js"></script>
+        <meta charset="utf-8" />
+        <title>
+            Hello World | Hexo
+        </title>
+        <meta name="author" content="John Doe" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-            // 创建小部件实例并挂载到指定元素
-            new SakanaWidget(widgetOptions).mount('#sakana-widget');
-        }
-        // 异步加载脚本
-        window.addEventListener('load', initSakanaWidget);
-    </script>
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
-    <!-- 其他 Hexo 自动生成的内容 -->
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+
+
+
+
+    <meta name="generator" content="Hexo 7.3.0"></head>
+
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
                 </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
             <span>HEXO</span>
@@ -155,8 +171,8 @@
     <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
 </transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
+                <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                    <div class="article">
     <div>
         <h1>Hello World</h1>
     </div>
@@ -196,7 +212,7 @@
     
 </div>
 
-            <footer id="footer">
+                        <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -214,23 +230,23 @@
     </div>
 </footer>
 
-        </div>
-        
-            <transition name="fade">
-                <div id="preview" ref="preview" v-show="previewShow">
-                    <img id="preview-content" ref="previewContent" />
                 </div>
-            </transition>
+                
+                    <transition name="fade">
+                        <div id="preview" ref="preview" v-show="previewShow">
+                            <img id="preview-content" ref="previewContent" />
+                        </div>
+                    </transition>
+                    
+        </div>
+        <script src="/%20/js/main.js"></script>
         
-    </div>
-    <script src="/js/main.js"></script>
-    
-        
+            
 
 
 
 
-    
-</body>
+                
+    </body>
 
-</html>
+    </html>
